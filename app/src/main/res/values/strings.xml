@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NEWS</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="Business">商業</string>
+    <string name="Entertainment">娛樂</string>
+    <string name="Health">健康</string>
+    <string name="Science">科學</string>
+    <string name="Sports">運動</string>
+    <string name="Technology">科技</string>
+
+</resources>
