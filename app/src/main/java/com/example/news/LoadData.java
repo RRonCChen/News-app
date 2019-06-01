@@ -50,7 +50,6 @@ public class LoadData {
                     e.printStackTrace();
                 }
 
-                Log.d("onResponse", response);
             }
         }, new Response.ErrorListener() {
             @Override

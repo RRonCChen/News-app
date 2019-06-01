@@ -39,10 +39,10 @@ public class TechnologyFragment extends Fragment {
 
         newsObjects = new ArrayList<>();
         recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_business, container, false);
-        cardRecycleAdapter = new CardRecycleAdapter(newsObjects);
+        cardRecycleAdapter = new CardRecycleAdapter(newsObjects,getActivity());
         recyclerView.setAdapter(cardRecycleAdapter);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(recyclerView.getContext().getApplicationContext(), 1);
+        GridLayoutManager layoutManager = new GridLayoutManager(recyclerView.getContext().getApplicationContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
         new LoadData(newsObjects, cardRecycleAdapter).getData(inflater, url);

@@ -2,9 +2,11 @@ package com.example.news;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,10 +26,12 @@ import java.util.ArrayList;
 public class CardRecycleAdapter extends RecyclerView.Adapter<CardRecycleAdapter.CardViewHolder> {
 
     private ArrayList<NewsObject> newsObjects;
+    private FragmentActivity main_activity;
 
 
-    public CardRecycleAdapter(ArrayList<NewsObject> newsObjects) {
+    public CardRecycleAdapter(ArrayList<NewsObject> newsObjects, FragmentActivity main_activity) {
         this.newsObjects = newsObjects;
+        this.main_activity = main_activity;
     }
 
 
@@ -38,7 +42,7 @@ public class CardRecycleAdapter extends RecyclerView.Adapter<CardRecycleAdapter.
     }
 
     @Override
-    public void onBindViewHolder(CardRecycleAdapter.CardViewHolder cardViewHolder, int i) {
+    public void onBindViewHolder(CardRecycleAdapter.CardViewHolder cardViewHolder, final int i) {
         CardView cardView = cardViewHolder.cardView;
         ImageView imageView = cardView.findViewById(R.id.news_image);
 
@@ -46,6 +50,16 @@ public class CardRecycleAdapter extends RecyclerView.Adapter<CardRecycleAdapter.
 
         TextView newTitle = cardView.findViewById(R.id.news_title);
         newTitle.setText(newsObjects.get(i).getTitle());
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = newsObjects.get(i).getUrl();
+                Intent intent = new Intent(main_activity, WebActivity.class);
+                intent.putExtra("url",url);
+                main_activity.startActivity(intent);
+            }
+        });
     }
 
     @Override

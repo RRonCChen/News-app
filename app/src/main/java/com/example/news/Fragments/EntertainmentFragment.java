@@ -3,6 +3,7 @@ package com.example.news.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ public class EntertainmentFragment extends Fragment {
     private CardRecycleAdapter cardRecycleAdapter;
     private RecyclerView recyclerView;
 
+
     public EntertainmentFragment() {
         // Required empty public constructor
     }
@@ -38,10 +40,10 @@ public class EntertainmentFragment extends Fragment {
 
         newsObjects = new ArrayList<>();
         recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_business, container, false);
-        cardRecycleAdapter = new CardRecycleAdapter(newsObjects);
+        cardRecycleAdapter = new CardRecycleAdapter(newsObjects,getActivity());
         recyclerView.setAdapter(cardRecycleAdapter);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(recyclerView.getContext().getApplicationContext(), 1);
+        GridLayoutManager layoutManager = new GridLayoutManager(recyclerView.getContext().getApplicationContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
         new LoadData(newsObjects, cardRecycleAdapter).getData(inflater, url);
